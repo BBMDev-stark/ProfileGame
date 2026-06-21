@@ -1,0 +1,13 @@
+/* Full-screen overlay for the gate-enter cinematic (App.jsx
+   handleEnterMainWorld). Starts fully transparent and is driven purely by
+   GSAP tweening `opacity` - the CSS here just sets up stacking/position,
+   it doesn't animate anything itself. */
+
+.gate-fade {
+  position: fixed;
+  inset: 0;
+  z-index: 9001;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}

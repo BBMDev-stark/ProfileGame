@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "NewAmsterdam";
+  /* NOTE: like the CV link / video src elsewhere in this project, this is a
+     root-absolute path. It resolves correctly in local dev and on a
+     root-domain deploy. If deploying under a GH Pages subpath (e.g.
+     /Portfolio/), prefix it the same way those other paths are prefixed,
+     e.g. url("/Portfolio/NewAmsterdam-Regular.woff"). The title gracefully
+     falls back to "Ubuntu" below if this font doesn't load. */
+  src: url("/NewAmsterdam-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.intro-fantasy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(2rem, 6vh, 4.5rem) 1.5rem;
+  pointer-events: none; /* clicks/hover pass through to the 3D gate */
+  opacity: 0;
+  text-align: center;
+  font-family: "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+  color: #f3e6cf;
+}
+
+.intro-fantasy-content {
+  margin-top: clamp(1rem, 6vh, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.intro-fantasy-kicker {
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: clamp(0.65rem, 1.4vw, 0.85rem);
+  color: #d99a4e;
+  margin: 0;
+}
+
+.intro-fantasy-title {
+  font-family: "NewAmsterdam", "Ubuntu", serif;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  letter-spacing: 0.04em;
+  margin: 0;
+  background: linear-gradient(180deg, #ffe9c2 0%, #e8a857 55%, #c97a2e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(233, 158, 75, 0.35);
+}
+
+.intro-fantasy-subtitle {
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  color: rgba(243, 230, 207, 0.75);
+  margin: 0;
+  font-weight: 300;
+}
+
+.intro-fantasy-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  color: rgba(243, 230, 207, 0.8);
+  letter-spacing: 0.02em;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid rgba(233, 158, 75, 0.35);
+  border-radius: 999px;
+  background: rgba(20, 16, 10, 0.35);
+  backdrop-filter: blur(6px);
+  animation: intro-hint-pulse 2.6s ease-in-out infinite;
+}
+
+.intro-fantasy-hint-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffb15e;
+  box-shadow: 0 0 10px 2px rgba(255, 177, 94, 0.7);
+  flex-shrink: 0;
+}
+
+@keyframes intro-hint-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 640px) {
+  .intro-fantasy-overlay {
+    padding: 1.5rem 1rem;
+  }
+  .intro-fantasy-hint {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-fantasy-hint {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------------------
+ * OPTIONAL: re-tint the existing htmll.css theme (purple/violet) toward
+ * the same amber/gold fantasy palette so the mood carries through after
+ * the portal transition, without rewriting htmll.css itself. Uncomment
+ * the block below (or copy it into htmll.css's :root) to apply it.
+ * ----------------------------------------------------------------------
+ *
+ * :root {
+ *   --primary-color: #e8a857;
+ *   --coloring: #ffb15e;
+ *   --accent-color: #d99a4e;
+ *   --dark-bg: #0c0e18;
+ *   --glow: 0 0 15px #d99a4e;
+ * }
+ */
