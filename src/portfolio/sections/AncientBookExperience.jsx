@@ -118,7 +118,7 @@ function ClosedBook({ onClick }) {
       onClick={onClick}
       onPointerOver={() => { hoverRef.current = true; document.body.style.cursor = "pointer"; }}
       onPointerOut={() => { hoverRef.current = false; document.body.style.cursor = "default"; }}
-      scale={130}                    // ← TĂNG RẤT NHIỀU
+      scale={110}                    // ← TĂNG RẤT NHIỀU
       position={[0, 0.6, 0]}       // ← Nâng cao hơn
     >
       <primitive object={scene} />

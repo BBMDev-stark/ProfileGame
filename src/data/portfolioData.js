@@ -24,7 +24,7 @@ export const profile = {
   name: "Bui Binh Minh",
   role: "Game Developer",
   tagline: "Unity & C# · Interactive Tech · Gameplay Programming",
-  photo: "public\\imgs\\BinhMInh2.jpg",
+  photo: "/imgs/BinhMInh2.jpg",
   location: "Bien Hoa City, Dong Nai Province, Vietnam",
   email: "buiminh19102004@gmail.com",
   phone: "0973212834",
