@@ -53,15 +53,15 @@ export const profile = {
 // pages (same filenames, public/imgs/cv/) — the Download button below
 // them always points at profile.cv above, independent of these images.
 export const cvPreview = [
-  { id: "cv-page-1", image: "public\\imgs\\cvmattrc.jpg", alt: "CV — Page 1" },
-  { id: "cv-page-2", image: "public\\imgs\\cvmatsau.jpg", alt: "CV — Page 2" },
+  { id: "cv-page-1", image: "/imgs/cvmattrc.jpg", alt: "CV — Page 1" },
+  { id: "cv-page-2", image: "/imgs/cvmatsau.jpg", alt: "CV — Page 2" },
 ];
 
 // Wide "key art" banner shown at the top of the Outstanding Product
 // chapter. Swap the file at this path with your own (keep it long/wide -
 // something like 1600x420 reads well) and nothing else needs to change.
 export const projectsBanner = {
-  image: "public\\imgs\\game1.png",
+  image: "/imgs/game1.png",
   alt: "Game-style banner showcasing outstanding product work",
 };
 
@@ -78,55 +78,55 @@ export const projectsBanner = {
 export const designGallery = [
   {
     id: "design-1",
-    image: "public\\imgs\\game2.png",
+    image: "/imgs/game2.png",
     alt: "Ancient Fantasy Warrior",
     title: "Chiến Binh Cổ Đại"
   },
   {
     id: "design-2",
-    image: "public\\imgs\\game3.png",
+    image: "/imgs/game3.png",
     alt: "Mystical Artifact",
     title: "Lối chơi"
   },
   {
     id: "design-3",
-    image: "public\\imgs\\game4.png",
+    image: "/imgs/game4.png",
     alt: "Enchanted Ruins",
     title: "Quang Cảnh thế giới"
   },
   {
     id: "design-4",
-    image: "public\\imgs\\game5.png",
+    image: "/imgs/game5.png",
     alt: "Ancient Dragon",
     title: "Rồng Cổ Đại"
   },
   {
     id: "design-5",
-    image: "public\\imgs\\game6.png",
+    image: "/imgs/game6.png",
     alt: "Arcane Mage",
     title: "Pháp Sư Huyền Thuật"
   },
   {
     id: "design-6",
-    image: "public\\imgs\\game8.png",
+    image: "/imgs/game8.png",
     alt: "Epic Battle",
     title: "Trận Chiến Huyền Thoại"
   },
   {
     id: "design-7",
-    image: "public\\imgs\\game7.png",
+    image: "/imgs/game7.png",
     alt: "Forest Spirit",
     title: "Linh Hồn Rừng Sâu"
   },
   {
     id: "design-8",
-    image: "public\\imgs\\game9.png",
+    image: "/imgs/game9.png",
     alt: "Dungeon Exploration",
     title: "Khám Phá Hầm Ngục"
   },
   {
     id: "design-9",
-    image: "public\\imgs\\game10.png",
+    image: "/imgs/game10.png",
     alt: "Ancient Guardian",
     title: "Thủ Hộ Thần Cổ Xưa"
   },
@@ -248,28 +248,28 @@ export const achievements = [
      year: "2025 – 2026",
      title: "National Champion",
      event: "APEC INNOVATION – Season II",
-     image: "public/imgs/700267260_1384133167081378_8523055942961063260_n.jpg",
+     image: "/imgs/700267260_1384133167081378_8523055942961063260_n.jpg",
    },
    {
      id: "svthm-2026",
      year: "2026",
      title: "National Encouragement Award",
      event: "\u201CNew Generation Students 2026\u201D – VTV",
-     image: "public/imgs/614659462_1388308156423936_892036974209737418_n.jpg",
+     image: "/imgs/614659462_1388308156423936_892036974209737418_n.jpg",
    },
    {
      id: "dntc-2025",
      year: "2025",
      title: "Champion",
      event: "Dong Nai Province Digital Transformation Competition 2025",
-     image: "public/imgs/484580153_1389359975847035_6922982835931403777_n.jpg",
+     image: "/imgs/484580153_1389359975847035_6922982835931403777_n.jpg",
    },
     {
      id: "khsv-2025",
      year: "2025",
      title: "Champion",
      event: "Expanded Student Science Conference – Dong Nai Province 2025",
-     image: "public/imgs/506469544_1219336983321055_4161374967542504237_n.jpg",
+     image: "/imgs/506469544_1219336983321055_4161374967542504237_n.jpg",
    },
 ];
 

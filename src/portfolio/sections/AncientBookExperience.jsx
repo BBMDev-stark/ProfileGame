@@ -14,8 +14,12 @@ function FPSCamera({ opened, exploreMode, onExit }) {
   const controlsRef = useRef();
 
   const keys = useRef({
-    w: false, a: false, s: false, d: false,
-    space: false, shift: false
+    w: false,
+    a: false,
+    s: false,
+    d: false,
+    space: false,
+    shift: false,
   });
 
   // Fullscreen khi vào mode
@@ -39,7 +43,10 @@ function FPSCamera({ opened, exploreMode, onExit }) {
     document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullscreenChange,
+      );
     };
   }, [exploreMode, onExit]);
 
@@ -80,7 +87,9 @@ function FPSCamera({ opened, exploreMode, onExit }) {
     if (!opened || !exploreMode) return;
 
     const speed = 12 * delta;
-    const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion);
+    const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(
+      camera.quaternion,
+    );
     const right = new THREE.Vector3(1, 0, 0).applyQuaternion(camera.quaternion);
 
     if (keys.current.w) camera.position.addScaledVector(forward, speed);
@@ -116,10 +125,16 @@ function ClosedBook({ onClick }) {
     <group
       ref={groupRef}
       onClick={onClick}
-      onPointerOver={() => { hoverRef.current = true; document.body.style.cursor = "pointer"; }}
-      onPointerOut={() => { hoverRef.current = false; document.body.style.cursor = "default"; }}
-      scale={110}                    // ← TĂNG RẤT NHIỀU
-      position={[0, 0.6, 0]}       // ← Nâng cao hơn
+      onPointerOver={() => {
+        hoverRef.current = true;
+        document.body.style.cursor = "pointer";
+      }}
+      onPointerOut={() => {
+        hoverRef.current = false;
+        document.body.style.cursor = "default";
+      }}
+      scale={80} // ← TĂNG RẤT NHIỀU
+      position={[0, 0.6, 0]} // ← Nâng cao hơn
     >
       <primitive object={scene} />
     </group>
@@ -135,7 +150,7 @@ function OpenBook() {
   useFrame((_, delta) => {
     if (scaleProgress.current < 1) {
       scaleProgress.current = Math.min(1, scaleProgress.current + delta * 3);
-      const s = 3.0 * easeOutBack(scaleProgress.current);   // ← Tăng size mạnh
+      const s = 3.0 * easeOutBack(scaleProgress.current); // ← Tăng size mạnh
       if (groupRef.current) groupRef.current.scale.setScalar(s);
     }
 
@@ -145,10 +160,10 @@ function OpenBook() {
   });
 
   return (
-    <group 
-      ref={groupRef} 
+    <group
+      ref={groupRef}
       scale={0}
-      position={[0, 0.7, 0]}        // ← Nâng cao hơn
+      position={[0, 0.7, 0]} // ← Nâng cao hơn
     >
       <primitive object={scene} />
     </group>
@@ -172,14 +187,16 @@ function ClickParticles({ active }) {
     const positions = new Float32Array(count * 3);
     const velocities = [];
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = 0; positions[i * 3 + 1] = 0; positions[i * 3 + 2] = 0;
+      positions[i * 3] = 0;
+      positions[i * 3 + 1] = 0;
+      positions[i * 3 + 2] = 0;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.random() * Math.PI;
       const speed = 0.5 + Math.random() * 2;
       velocities.push(
         Math.sin(phi) * Math.cos(theta) * speed,
         Math.sin(phi) * Math.sin(theta) * speed + 0.5,
-        Math.cos(phi) * speed
+        Math.cos(phi) * speed,
       );
     }
     posRef.current = { positions, velocities };
@@ -207,9 +224,20 @@ function ClickParticles({ active }) {
   return (
     <points ref={meshRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={posRef.current.positions} count={posRef.current.positions.length / 3} itemSize={3} />
+        <bufferAttribute
+          attach="attributes-position"
+          array={posRef.current.positions}
+          count={posRef.current.positions.length / 3}
+          itemSize={3}
+        />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#ffc97a" transparent opacity={1} sizeAttenuation />
+      <pointsMaterial
+        size={0.05}
+        color="#ffc97a"
+        transparent
+        opacity={1}
+        sizeAttenuation
+      />
     </points>
   );
 }
@@ -242,18 +270,18 @@ export default function AncientBookExperience() {
         <header className="pf-chapter-head">
           <p className="pf-chapter-head__eyebrow">Secret Chapter</p>
           <h2 className="pf-chapter-head__title">Ancient Library</h2>
-          <p className="pf-chapter-head__subtitle">Discover the hidden knowledge</p>
+          <p className="pf-chapter-head__subtitle">
+            Discover the hidden knowledge
+          </p>
         </header>
 
         {!opened && (
-          <p className="pf-book-hint">
-            ✦ Click vào cuốn sách để mở ra bí ẩn ✦
-          </p>
+          <p className="pf-book-hint">✦ Click vào cuốn sách để mở ra bí ẩn ✦</p>
         )}
 
         {opened && (
           <div style={{ textAlign: "center", marginBottom: "15px" }}>
-            <button 
+            <button
               id="explore-button"
               onClick={toggleExplore}
               style={{
@@ -265,7 +293,7 @@ export default function AncientBookExperience() {
                 borderRadius: "50px",
                 cursor: "pointer",
                 fontWeight: "bold",
-                boxShadow: "0 6px 25px rgba(0,0,0,0.6)"
+                boxShadow: "0 6px 25px rgba(0,0,0,0.6)",
               }}
             >
               {exploreMode ? "🔙 Thoát Khám Phá" : "🔍 BẮT ĐẦU KHÁM PHÁ (FPS)"}
@@ -273,34 +301,45 @@ export default function AncientBookExperience() {
           </div>
         )}
 
-        <div className="pf-book-container" style={{ height: "75vh", borderRadius: "12px", overflow: "hidden" }}>
-          <Canvas 
-            camera={{ 
-              position: [0, 1.8, 3.2],   // ← GẦN HƠN
-              fov: 42,                    // ← Zoom in mạnh
-              near: 0.1, 
-              far: 100 
+        <div
+          className="pf-book-container"
+          style={{ height: "75vh", borderRadius: "12px", overflow: "hidden" }}
+        >
+          <Canvas
+            camera={{
+              position: [0, 1.8, 3.2], // ← GẦN HƠN
+              fov: 42, // ← Zoom in mạnh
+              near: 0.1,
+              far: 100,
             }}
             style={{ background: "#0a0503" }}
           >
             <ambientLight intensity={1.4} />
             <directionalLight position={[5, 8, 5]} intensity={3} />
             <pointLight position={[-3, 2, 2]} intensity={1.5} color="#ffb15e" />
-            
+
             <Environment preset="sunset" />
 
-            <Suspense fallback={
-              <mesh position={[0, 0.5, 0]}>
-                <boxGeometry args={[2,2,2]} />
-                <meshStandardMaterial color="#4a3728" />
-              </mesh>
-            }>
+            <Suspense
+              fallback={
+                <mesh position={[0, 0.5, 0]}>
+                  <boxGeometry args={[2, 2, 2]} />
+                  <meshStandardMaterial color="#4a3728" />
+                </mesh>
+              }
+            >
               {!opened ? <ClosedBook onClick={handleOpen} /> : <OpenBook />}
             </Suspense>
 
             <ClickParticles active={burst} />
 
-            {opened && <FPSCamera opened={opened} exploreMode={exploreMode} onExit={exitExplore} />}
+            {opened && (
+              <FPSCamera
+                opened={opened}
+                exploreMode={exploreMode}
+                onExit={exitExplore}
+              />
+            )}
           </Canvas>
         </div>
 
